@@ -1,0 +1,23 @@
+﻿<div class="@selectedCss" onclick="@(()=>SelectingThis(Text))" title="Clic me!">
+    <b>@Text</b>
+</div>
+
+@code {
+    [Parameter] public string Text { get; set; } = "";
+    [Parameter] public bool IsSelected { get; set; }
+    [Parameter] public EventCallback<string>OnSelectedText{ get; set; }
+
+    private string selectedCss = "";
+
+    protected override void OnParametersSet()
+    {
+        selectedCss = IsSelected ? "selected" : "";
+        StateHasChanged();
+    }
+
+    async Task SelectingThis(string text)
+    {
+        await OnSelectedText.InvokeAsync(text);
+    }
+
+}

@@ -1,0 +1,8 @@
+﻿div {
+    cursor: pointer;
+}
+
+.selected {
+    color: red;
+    font-weight:bold;
+}
