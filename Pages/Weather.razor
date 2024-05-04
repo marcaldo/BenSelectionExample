@@ -31,7 +31,7 @@ else
                     <td>
                         <SelectedText Text="@forecast.TemperatureF.ToString()"
                                       IsSelected="@(selectedText.Equals(forecast.TemperatureF.ToString()))"
-                                      OnSelectedText="@((value)=>selectedText = value)" />
+                                      OnSelectedText="UpdateSelection" />
                     </td>
                     <td>
                         <SelectedText Text="@forecast.Summary"
@@ -62,5 +62,10 @@ else
         public string? Summary { get; set; }
 
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+
+    void UpdateSelection(string text)
+    {
+        selectedText = text;
     }
 }
